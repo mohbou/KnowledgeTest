@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class InMemoryRpositoryMock implements QuestionRepository {
+public class InMemoryRepositoryMockEmpty implements QuestionRepository {
     @Override
     public List<Question> loadQuestions() {
         return Collections.emptyList();

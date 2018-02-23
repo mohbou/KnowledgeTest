@@ -31,21 +31,18 @@ public class MainAdapter extends RecyclerView.Adapter<MainHolder> {
         holder.textView.setChecked(answer.isSelected());
         holder.textView.setCheckMarkDrawable(answer.isSelected() ? R.drawable.ic_checked : R.drawable.ic_unchecked);
 
-        holder.textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(holder.textView.isChecked()) {
-                holder.textView.setCheckMarkDrawable(R.drawable.ic_unchecked);
-                    holder.textView.setChecked(false);
-                    answer.setSelected(false);
-                    question.getAnswers().set(position,answer);
-                        }
-                else {
-                    holder.textView.setCheckMarkDrawable(R.drawable.ic_checked);
-                    holder.textView.setChecked(true);
-                    answer.setSelected(true);
-                    question.getAnswers().set(position,answer);
-                }
+        holder.textView.setOnClickListener(view -> {
+            if(holder.textView.isChecked()) {
+            holder.textView.setCheckMarkDrawable(R.drawable.ic_unchecked);
+                holder.textView.setChecked(false);
+                answer.setSelected(false);
+                question.getAnswers().set(position,answer);
+                    }
+            else {
+                holder.textView.setCheckMarkDrawable(R.drawable.ic_checked);
+                holder.textView.setChecked(true);
+                answer.setSelected(true);
+                question.getAnswers().set(position,answer);
             }
         });
 

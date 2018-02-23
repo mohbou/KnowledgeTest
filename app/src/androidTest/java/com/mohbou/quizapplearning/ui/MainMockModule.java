@@ -12,7 +12,7 @@ public class MainMockModule extends MainModule {
     @Provides
     @ApplicationQuizScope
     public QuestionRepository provideRepository() {
-        return new InMemoryRpositoryMock();
+        return new InMemoryRepositoryMockEmpty();
     }
 
 }
