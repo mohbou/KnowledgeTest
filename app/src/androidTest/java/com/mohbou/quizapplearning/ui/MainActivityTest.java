@@ -81,6 +81,21 @@ public class MainActivityTest {
 
     }
 
+    @Test
+    public void shouldDisplayPreviousQuestionWhenClickPrevious() {
+        myApp.empty = false;
+        activityRule.launchActivity(null);
+        onView(withId(R.id.previous_button)).check(matches(not(isDisplayed())));
+        onView(withId(R.id.recyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));
+        onView(withId(R.id.next_button)).check(matches(isDisplayed()))
+                .perform(click());
+        onView(withId(R.id.recyclerView)).perform(RecyclerViewActions.actionOnItemAtPosition(0,click()));
+        onView(withId(R.id.previous_button)).perform(click());
+        onView(withId(R.id.question_statement)).check(matches(withText("This is a fake statement for Question number :0")));
+
+
+    }
+
     private class ToastMatcher extends TypeSafeMatcher<Root> {
 
         @Override

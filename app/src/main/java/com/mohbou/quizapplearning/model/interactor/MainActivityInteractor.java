@@ -22,12 +22,7 @@ public class MainActivityInteractor implements MVPMainActivityInterface.Model {
 
     @Override
     public Single<List<Question>> loadQuestions() {
-        return Single.fromCallable(new Callable<List<Question>>() {
-            @Override
-            public List<Question> call() throws Exception {
-                return repository.loadQuestions();
-            }
-        });
+        return Single.fromCallable(() -> repository.loadQuestions());
 
     }
 }
