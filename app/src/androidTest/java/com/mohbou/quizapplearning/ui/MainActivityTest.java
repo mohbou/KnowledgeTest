@@ -1,14 +1,20 @@
 package com.mohbou.quizapplearning.ui;
 
 import android.os.IBinder;
+import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.Root;
 import android.support.test.rule.ActivityTestRule;
 import android.view.WindowManager;
 
+import com.mohbou.quizapplearning.App;
 import com.mohbou.quizapplearning.R;
+import com.mohbou.quizapplearning.dependecies.ApplicationComponent;
+import com.mohbou.quizapplearning.dependecies.ApplicationModule;
+import com.mohbou.quizapplearning.dependecies.DaggerApplicationComponent;
 
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -27,6 +33,19 @@ public class MainActivityTest {
                     MainActivity.class,
                     true,
                     false);
+
+    @Before
+    public void setup() {
+        ApplicationComponent component;
+
+        MyAppMock myApp = (MyAppMock) InstrumentationRegistry
+                          .getInstrumentation()
+                          .getTargetContext()
+                           .getApplicationContext();
+
+        component = myApp.getComponent();
+
+    }
 
     @Test
     public void questionsNotFound() {
